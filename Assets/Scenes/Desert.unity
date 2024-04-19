@@ -173,7 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 29363481}
   controller: {fileID: 29363480}
-  initialSpeed: 5
+  animator: {fileID: 1370013876}
+  initialSpeed: 4
   maxPowerSpeed: 6
   rotationSpeed: 90
 --- !u!143 &29363480
@@ -817,6 +818,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: city_dwellers_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: bce6b60b8add8c743a7b00bbe292282c, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 1b4e44bb8c92c4c40bd653f0f5652ee6, type: 3}
+    - target: {fileID: 5866666021909216657, guid: bce6b60b8add8c743a7b00bbe292282c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0b1b00002ed79af4ab08c8a8071dbaf1, type: 2}
+    - target: {fileID: 5866666021909216657, guid: bce6b60b8add8c743a7b00bbe292282c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1038,6 +1051,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1370013876 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: bce6b60b8add8c743a7b00bbe292282c, type: 3}
+  m_PrefabInstance: {fileID: 1074716700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390112448
 GameObject:
   m_ObjectHideFlags: 0
