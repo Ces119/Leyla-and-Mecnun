@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float initialSpeed = 5f;
     [SerializeField] private float maxPowerSpeed = 12f;
     [SerializeField] private float rotationSpeed = 90f;
+
     
     void Update()
     {
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 move = transform.forward * z;
 
-            var powerSpeedMultiplier = Mathf.InverseLerp(0f, stats.maxHealth, stats.currentHealth);
+            var powerSpeedMultiplier = Mathf.InverseLerp(0f, stats.MaxHealth, stats.CurrentHealth);
             var speed = initialSpeed + maxPowerSpeed * powerSpeedMultiplier;
             controller.SimpleMove(move * speed);
             
