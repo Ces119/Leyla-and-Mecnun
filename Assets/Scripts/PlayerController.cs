@@ -1,28 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public CharacterController controller;
-    public float _speed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private PlayerStats stats;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private float initialSpeed = 5f;
+    [SerializeField] private float maxPowerSpeed = 12f;
+    [SerializeField] private float rotationSpeed = 90f;
+    
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        direction = transform.TransformDirection(direction);
-        if (direction.magnitude >= 0.1f)
+        controller.Move(Physics.gravity * Time.deltaTime);
+        
+        if (controller.isGrounded)
         {
-            controller.Move(direction * _speed * Time.deltaTime);
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.forward * z;
+
+            var powerSpeedMultiplier = Mathf.InverseLerp(0f, stats.maxHealth, stats.currentHealth);
+            var speed = initialSpeed + maxPowerSpeed * powerSpeedMultiplier;
+            controller.SimpleMove(move * speed);
+            
+            transform.Rotate(Vector3.up * x * rotationSpeed * Time.deltaTime);
         }
     }
 }
