@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int currentHealth;
     [SerializeField] private HealthBar healthBar;
-    [SerializeField] private int damagePerInterval = 1;
+    [SerializeField] private int damagePerInterval = 3;
     [SerializeField] private float intervalDuration = 0.3f;
     
     private float _interval;
@@ -44,7 +44,7 @@ public class PlayerStats : MonoBehaviour
         {
             if (currentHealth < maxHealth && currentHealth > 0)
             {
-                UpdateHealth(1);
+                UpdateHealth(3);
                 Destroy(other.gameObject);
             }
         }
