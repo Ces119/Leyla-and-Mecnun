@@ -7,8 +7,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int currentHealth;
     [SerializeField] private HealthBar healthBar;
-    [SerializeField] private int damagePerInterval = 3;
+    [SerializeField] private int damagePerInterval = 2;
     [SerializeField] private float intervalDuration = 0.3f;
+    [SerializeField] private AudioSource audioClip;
     
     private float _interval;
     
@@ -29,7 +30,16 @@ public class PlayerStats : MonoBehaviour
         {
             TakeDamage(damagePerInterval);
             _interval = intervalDuration;
-        }        
+        }
+        // if  Health = 0 , shows gameOver Screen
+        if (currentHealth <= 0)
+        {
+            FindObjectOfType<GameManager>().GameOver();
+        }
+        if (transform.position.y < - 10.0f)
+        {
+            FindObjectOfType<GameManager>().GameOver();
+        }       
     }
     
     void TakeDamage(int damage)
@@ -44,7 +54,8 @@ public class PlayerStats : MonoBehaviour
         {
             if (currentHealth < maxHealth && currentHealth > 0)
             {
-                UpdateHealth(3);
+                audioClip.Play();                
+                UpdateHealth(4);
                 Destroy(other.gameObject);
             }
         }
